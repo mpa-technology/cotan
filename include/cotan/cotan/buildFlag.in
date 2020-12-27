@@ -1,0 +1,9 @@
+
+#pragma once
+
+
+
+#define COTON_BUILD_NATIVE @COTON_BUILD_NATIVE@
+
+
+
