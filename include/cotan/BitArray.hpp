@@ -20,6 +20,7 @@ class BitArray{
 
 public:
     typedef std::uint8_t type;
+    typedef const std::uint8_t type_const;
     typedef std::vector<type>::iterator iterator;
     typedef const std::vector<type>::const_iterator iterator_const;
 
@@ -48,6 +49,16 @@ public:
     }
 
 
+    type& operator[](const size_t& index){
+        return data_.at(index);
+    }
+
+    type_const& operator[](const size_t& index)const{
+        return data_.at(index);
+    }
+
+
+
     iterator begin();
     iterator_const begin()const;
 
@@ -59,6 +70,15 @@ public:
     size_t size()const;
 
 
+    std::string toString()const{
+        std::string string;
+
+        for(const auto& it : data_)
+            string += static_cast<std::string::value_type>(it);
+
+
+        return string;
+    }
 
 
 

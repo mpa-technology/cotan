@@ -58,3 +58,13 @@ cotan::BitArray::iterator_const cotan::BitArray::end() const{
 size_t cotan::BitArray::size() const{
     return data_.size();
 }
+
+std::string cotan::BitArray::toString() const{
+    std::string string;
+
+    for(const auto& it : data_)
+        string += static_cast<std::string::value_type>(it);
+
+
+    return string;
+}
