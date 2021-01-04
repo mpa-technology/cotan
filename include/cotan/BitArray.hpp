@@ -7,7 +7,9 @@
 
 #include <vector>
 #include <string>
+#include <cstring>
 
+#include <valarray>
 
 
 namespace cotan {
@@ -16,7 +18,6 @@ namespace cotan {
 class BitArray{
 
     std::vector<std::uint8_t>data_;
-
 
 public:
     typedef std::uint8_t type;
@@ -29,6 +30,7 @@ public:
     BitArray();
 
     BitArray(const std::string& string);
+
 
 
 
@@ -70,15 +72,7 @@ public:
     size_t size()const;
 
 
-    std::string toString()const{
-        std::string string;
-
-        for(const auto& it : data_)
-            string += static_cast<std::string::value_type>(it);
-
-
-        return string;
-    }
+    std::string toString()const;
 
 
 

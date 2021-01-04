@@ -4,7 +4,6 @@
 */
 
 #include <cotan/BitArray.hpp>
-#include <cstring>
 
 
 cotan::BitArray::BitArray(){}
