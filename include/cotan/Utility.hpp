@@ -17,7 +17,7 @@ template<typename T , typename  = typename std::enable_if<std::is_integral<T>::v
 std::string toHex(const T &value){
     std::stringstream ss;
 
-    ss << std::hex << value;
+    ss << std::hex << static_cast<int>(value);
 
     return ss.str();
 }
