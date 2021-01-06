@@ -15,6 +15,13 @@ cotan::BitArray::BitArray(const std::string &string){
 
 }
 
+cotan::BitArray &cotan::BitArray::operator<<(const std::vector<uint32_t> &vector){
+    for(const auto &it : vector)
+        data_.push_back(it);
+
+    return *this;
+}
+
 cotan::BitArray &cotan::BitArray::operator<<(const std::string &string){
 
     for(const auto& it : string)
@@ -82,4 +89,8 @@ std::string cotan::BitArray::toString() const{
 
 
     return string;
+}
+
+std::vector<uint8_t> cotan::BitArray::toVector() const{
+    return data_;
 }

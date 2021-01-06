@@ -9,8 +9,6 @@
 #include <string>
 #include <cstring>
 
-#include <valarray>
-
 
 namespace cotan {
 
@@ -32,16 +30,20 @@ public:
     BitArray(const std::string& string);
 
 
+    BitArray& operator<<(const std::vector<std::uint32_t> &vector);
+
+    BitArray& operator<<(const std::string &string);
+
+    BitArray& operator<<(const size_t &value);
+
+    BitArray& operator<<(const char *string);
 
 
-    BitArray& operator<<(const std::string& string);
-
-    BitArray& operator<<(const size_t& value);
-
-
-    BitArray& operator<<(const char* string);
-
-
+    template<typename T>
+    BitArray& operator<<(const std::vector<T> &value){
+        data_.push_back(static_cast<type>(value));
+        return *this;
+    }
 
 
     template<typename T>
@@ -56,15 +58,12 @@ public:
     type_const& operator[](const size_t& index)const;
 
 
-
     bool operator == (const BitArray& bitArray)const;
 
     bool operator != (const BitArray& bitArray)const;
 
-
     iterator begin();
     iterator_const begin()const;
-
 
     iterator end();
 
@@ -74,6 +73,8 @@ public:
 
 
     std::string toString()const;
+
+    std::vector<std::uint8_t>toVector()const;
 
 
 
