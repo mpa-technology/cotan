@@ -4,8 +4,14 @@
 */
 
 
-#include "adler32Test.hpp"
+#include <fstream>
+#include <iterator>
+
+
+#include "Adler32Test.hpp"
 #include "UtilityTest.hpp"
+#include "XorTest.hpp"
+
 
 
 
@@ -13,7 +19,10 @@
 
 int main(int argc, char *argv[]){
 
-   ::testing::InitGoogleTest(&argc,argv);
+
+
+
+    ::testing::InitGoogleTest(&argc,argv);
 
     return RUN_ALL_TESTS();
 }
