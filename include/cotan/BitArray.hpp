@@ -57,9 +57,9 @@ public:
 
 
 
-    bool operator == (const BitArray& bitArray);
+    bool operator == (const BitArray& bitArray)const;
 
-    bool operator != (const BitArray& bitArray);
+    bool operator != (const BitArray& bitArray)const;
 
 
     iterator begin();

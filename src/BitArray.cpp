@@ -31,11 +31,11 @@ cotan::BitArray::type_const &cotan::BitArray::operator[](const size_t &index) co
     return data_.at(index);
 }
 
-bool cotan::BitArray::operator ==(const cotan::BitArray &bitArray){
+bool cotan::BitArray::operator ==(const cotan::BitArray &bitArray) const{
     return data_ == bitArray.data_;
 }
 
-bool cotan::BitArray::operator !=(const cotan::BitArray &bitArray){
+bool cotan::BitArray::operator !=(const cotan::BitArray &bitArray)const{
     return data_ != bitArray.data_;
 }
 
