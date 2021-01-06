@@ -76,7 +76,7 @@ public:
 
     std::vector<std::uint8_t>toVector()const;
 
-
+    bool isEmpty()const;
 
 
 };

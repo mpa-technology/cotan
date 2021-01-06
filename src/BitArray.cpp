@@ -94,3 +94,7 @@ std::string cotan::BitArray::toString() const{
 std::vector<uint8_t> cotan::BitArray::toVector() const{
     return data_;
 }
+
+bool cotan::BitArray::isEmpty() const{
+    return data_.empty();
+}
