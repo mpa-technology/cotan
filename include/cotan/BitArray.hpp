@@ -51,14 +51,15 @@ public:
     }
 
 
-    type& operator[](const size_t& index){
-        return data_.at(index);
-    }
+    type& operator[](const size_t& index);
 
-    type_const& operator[](const size_t& index)const{
-        return data_.at(index);
-    }
+    type_const& operator[](const size_t& index)const;
 
+
+
+    bool operator == (const BitArray& bitArray);
+
+    bool operator != (const BitArray& bitArray);
 
 
     iterator begin();

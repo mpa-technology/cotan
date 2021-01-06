@@ -23,6 +23,22 @@ cotan::BitArray &cotan::BitArray::operator<<(const std::string &string){
     return *this;
 }
 
+cotan::BitArray::type &cotan::BitArray::operator[](const size_t &index){
+    return data_.at(index);
+}
+
+cotan::BitArray::type_const &cotan::BitArray::operator[](const size_t &index) const{
+    return data_.at(index);
+}
+
+bool cotan::BitArray::operator ==(const cotan::BitArray &bitArray){
+    return data_ == bitArray.data_;
+}
+
+bool cotan::BitArray::operator !=(const cotan::BitArray &bitArray){
+    return data_ != bitArray.data_;
+}
+
 cotan::BitArray &cotan::BitArray::operator<<(const size_t &value){
     data_.push_back(static_cast<type>(value));
     return *this;
