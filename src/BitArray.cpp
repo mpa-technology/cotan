@@ -34,6 +34,14 @@ cotan::BitArray::type &cotan::BitArray::operator[](const size_t &index){
     return data_.at(index);
 }
 
+cotan::BitArray::type &cotan::BitArray::at(const size_t &index){
+    return data_.at(index);
+}
+
+cotan::BitArray::type_const &cotan::BitArray::at(const size_t &index) const{
+    return data_.at(index);
+}
+
 cotan::BitArray::type_const &cotan::BitArray::operator[](const size_t &index) const{
     return data_.at(index);
 }

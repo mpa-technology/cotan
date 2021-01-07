@@ -55,6 +55,10 @@ public:
 
     type& operator[](const size_t& index);
 
+    type& at(const size_t& index);
+
+    type_const& at(const size_t& index)const;
+
     type_const& operator[](const size_t& index)const;
 
 
