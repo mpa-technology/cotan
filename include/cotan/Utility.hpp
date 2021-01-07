@@ -8,7 +8,7 @@
 #include <exception>
 #include <string>
 #include <sstream>
-
+#include <iomanip>
 
 namespace cotan {
 
@@ -17,10 +17,17 @@ template<typename T , typename  = typename std::enable_if<std::is_integral<T>::v
 std::string toHex(const T &value){
     std::stringstream ss;
 
-    ss << std::hex << static_cast<int>(value);
+
+    ss << std::setfill ('0') << std::setw(sizeof(decltype (value))*2)
+       << std::hex << static_cast<int>(value);
+
+
 
     return ss.str();
 }
+
+
+
 
 
 class NotImplemented_ : public std::exception{
