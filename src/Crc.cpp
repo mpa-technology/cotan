@@ -5,7 +5,7 @@
 
 #include <cotan/Crc.hpp>
 
-
+//crc8
 uint8_t cotan::Crc8::algorithm_(const cotan::BitArray &bitArray, const unsigned &iteration){
     unsigned crc = iteration;
     int i;
@@ -41,4 +41,40 @@ uint8_t cotan::Crc8::hash(const cotan::BitArray &bitArray){
     Crc8 crc8;
     crc8.addData(bitArray);
     return crc8.final();
+}
+
+
+//crc32
+
+
+uint32_t cotan::Crc32::algorithm_(const cotan::BitArray &bitArray, const unsigned &iteration){
+    auto crc = iteration;
+    for(const auto &it : bitArray)
+    {
+        crc = (crc << 8) ^ table_[((crc >> 24) ^ it) & 255];
+
+    }
+    return crc;
+}
+
+cotan::Crc32::Crc32():iteration_(0xffffffff){
+
+}
+
+void cotan::Crc32::addData(const cotan::BitArray &bitArray){
+    iteration_ = algorithm_(bitArray,iteration_);
+}
+
+uint32_t cotan::Crc32::final(){
+    return iteration_;
+}
+
+uint32_t cotan::Crc32::now(const cotan::BitArray &bitArray){
+    return Crc32::hash(bitArray);
+}
+
+uint32_t cotan::Crc32::hash(const cotan::BitArray &bitArray){
+    Crc32 crc32;
+    crc32.addData(bitArray);
+    return crc32.final();
 }
