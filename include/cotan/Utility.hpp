@@ -14,18 +14,29 @@ namespace cotan {
 
 
 template<typename T , typename  = typename std::enable_if<std::is_integral<T>::value>::type >
-std::string toHex(const T &value){
+std::string toHexW(const T &value){
     std::stringstream ss;
 
 
     ss << std::setfill ('0') << std::setw(sizeof(decltype (value))*2)
-       << std::hex << static_cast<int>(value);
+       << std::hex << (value);
 
 
 
     return ss.str();
 }
 
+template<typename T , typename  = typename std::enable_if<std::is_integral<T>::value>::type >
+std::string toHex(const T &value){
+    std::stringstream ss;
+
+
+    ss <<  std::hex << (value);
+
+
+
+    return ss.str();
+}
 
 
 

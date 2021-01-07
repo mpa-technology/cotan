@@ -6,6 +6,7 @@
 
 
 #pragma once
+#include <numeric>
 #include <gtest/gtest.h>
 #include <cotan/Utility.hpp>
 
@@ -13,8 +14,24 @@
 TEST(Utility,HexNum){
     ASSERT_EQ(cotan::toHex(1024),"400");
     ASSERT_EQ(cotan::toHex(16384),"4000");
+
+    //FIXME:
+    ASSERT_EQ(cotan::toHex(std::numeric_limits<int>::max()),"7fffffff");
+    ASSERT_EQ(cotan::toHex(std::numeric_limits<int>::min()),"80000000");
+
 }
 
+
+TEST(Utility,HexNumW){
+    ASSERT_EQ(cotan::toHexW(1024),"00000400");
+    ASSERT_EQ(cotan::toHexW(16384),"00004000");
+
+
+
+    //FIXME:
+    ASSERT_EQ(cotan::toHexW(std::numeric_limits<int>::max()),"7fffffff");
+    ASSERT_EQ(cotan::toHexW(std::numeric_limits<int>::min()),"80000000");
+}
 
 
 void f(){
