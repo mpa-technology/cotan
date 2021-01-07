@@ -15,6 +15,14 @@ cotan::BitArray::BitArray(const std::string &string){
 
 }
 
+cotan::BitArray::BitArray(const cotan::BitArraySlice &slice){
+
+    for(const auto &it: slice){
+        data_.push_back(it);
+    }
+
+}
+
 cotan::BitArray &cotan::BitArray::operator<<(const std::vector<uint32_t> &vector){
     for(const auto &it : vector)
         data_.push_back(it);
@@ -105,4 +113,62 @@ std::vector<uint8_t> cotan::BitArray::toVector() const{
 
 bool cotan::BitArray::isEmpty() const{
     return data_.empty();
+}
+
+cotan::BitArraySlice cotan::BitArray::slice(){
+    BitArraySlice slice(this);
+    slice.ibegin = data_.begin();
+    slice.iend = data_.end();
+    slice.size = std::distance(slice.ibegin,slice.iend);
+    return slice;
+}
+
+cotan::BitArraySlice cotan::BitArray::slice(const size_t &index){
+    BitArraySlice slice(this);
+    slice.ibegin = data_.begin()+index;
+    slice.iend = data_.end();
+    slice.size = std::distance(slice.ibegin,slice.iend);
+    return slice;
+}
+
+cotan::BitArraySlice cotan::BitArray::slice(const size_t &begin, const size_t &end){
+    BitArraySlice slice(this);
+    slice.ibegin = data_.begin()+begin;
+    slice.iend = data_.begin()+end;
+    slice.size = std::distance(slice.ibegin,slice.iend);
+    return slice;
+}
+
+
+
+
+
+
+//BitArraySlice
+
+
+cotan::BitArraySlice::BitArraySlice(cotan::BitArray *bitArray):bitArray_(bitArray){}
+
+cotan::BitArray *cotan::BitArraySlice::bitArray(){
+    return bitArray_;
+}
+
+const cotan::BitArray *cotan::BitArraySlice::bitArray() const{
+    return bitArray_;
+}
+
+cotan::BitArraySlice::iterator cotan::BitArraySlice::begin(){
+    return ibegin;
+}
+
+cotan::BitArraySlice::iterator cotan::BitArraySlice::end(){
+    return iend;
+}
+
+cotan::BitArraySlice::iterator_const cotan::BitArraySlice::begin() const{
+    return ibegin;
+}
+
+cotan::BitArraySlice::iterator_const cotan::BitArraySlice::end() const{
+    return iend;
 }
