@@ -11,6 +11,7 @@
 #include "Adler32Test.hpp"
 #include "UtilityTest.hpp"
 #include "XorTest.hpp"
+#include "CrcTest.hpp"
 
 
 
@@ -18,9 +19,6 @@
 
 
 int main(int argc, char *argv[]){
-
-
-
 
     ::testing::InitGoogleTest(&argc,argv);
 

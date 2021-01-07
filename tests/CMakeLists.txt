@@ -16,7 +16,7 @@ endif()
 
 
 
-add_executable( ${PROJECT_NAME} "main.cpp" "Adler32Test.hpp" "UtilityTest.hpp" "XorTest.hpp")
+add_executable( ${PROJECT_NAME} "main.cpp" "Adler32Test.hpp" "UtilityTest.hpp" "XorTest.hpp" "CrcTest.hpp")
 
 
 target_link_libraries( ${PROJECT_NAME} -lgtest cotan)
