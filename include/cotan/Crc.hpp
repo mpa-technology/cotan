@@ -113,41 +113,21 @@ class Crc32 : public Hash<uint32_t>{
 
 
 
-    uint32_t algorithm_(const BitArray &bitArray, const unsigned &iteration){
-        auto crc = iteration;
-        for(const auto &it : bitArray)
-        {
-            crc = (crc << 8) ^ table_[((crc >> 24) ^ it) & 255];
-
-        }
-        return crc;
-    }
+    uint32_t algorithm_(const BitArray &bitArray, const unsigned &iteration);
 
     uint32_t iteration_;
 
 public:
 
-    Crc32():iteration_(0xffffffff){
+    Crc32();
 
-    }
+    void addData(const BitArray &bitArray)override;
 
-    void addData(const BitArray &bitArray)override{
-        iteration_ = algorithm_(bitArray,iteration_);
-    }
+    uint32_t final()override;
 
-    uint32_t final()override{
-        return iteration_;
-    }
+    uint32_t now(const BitArray& bitArray)override;
 
-    uint32_t now(const BitArray& bitArray)override{
-        return Crc32::hash(bitArray);
-    }
-
-    static uint32_t hash(const BitArray& bitArray){
-        Crc32 crc32;
-        crc32.addData(bitArray);
-        return crc32.final();
-    }
+    static uint32_t hash(const BitArray& bitArray);
 
 
 
