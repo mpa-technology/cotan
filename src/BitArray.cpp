@@ -38,19 +38,19 @@ cotan::BitArray &cotan::BitArray::operator<<(const std::string &string){
     return *this;
 }
 
-cotan::BitArray::type &cotan::BitArray::operator[](const size_t &index){
+cotan::BitArray::type &cotan::BitArray::operator[](const size_t index){
     return data_.at(index);
 }
 
-cotan::BitArray::type &cotan::BitArray::at(const size_t &index){
+cotan::BitArray::type &cotan::BitArray::at(const size_t index){
     return data_.at(index);
 }
 
-cotan::BitArray::type_const &cotan::BitArray::at(const size_t &index) const{
+cotan::BitArray::type_const &cotan::BitArray::at(const size_t index) const{
     return data_.at(index);
 }
 
-cotan::BitArray::type_const &cotan::BitArray::operator[](const size_t &index) const{
+cotan::BitArray::type_const &cotan::BitArray::operator[](const size_t index) const{
     return data_.at(index);
 }
 
@@ -62,7 +62,7 @@ bool cotan::BitArray::operator !=(const cotan::BitArray &bitArray)const{
     return data_ != bitArray.data_;
 }
 
-cotan::BitArray &cotan::BitArray::operator<<(const size_t &value){
+cotan::BitArray &cotan::BitArray::operator<<(const size_t value){
     data_.push_back(static_cast<type>(value));
     return *this;
 }
@@ -123,7 +123,7 @@ cotan::BitArraySlice cotan::BitArray::slice(){
     return slice;
 }
 
-cotan::BitArraySlice cotan::BitArray::slice(const size_t &index){
+cotan::BitArraySlice cotan::BitArray::slice(const size_t index){
     BitArraySlice slice(this);
     slice.ibegin = data_.begin()+index;
     slice.iend = data_.end();
@@ -131,7 +131,7 @@ cotan::BitArraySlice cotan::BitArray::slice(const size_t &index){
     return slice;
 }
 
-cotan::BitArraySlice cotan::BitArray::slice(const size_t &begin, const size_t &end){
+cotan::BitArraySlice cotan::BitArray::slice(const size_t begin, const size_t end){
     BitArraySlice slice(this);
     slice.ibegin = data_.begin()+begin;
     slice.iend = data_.begin()+end;

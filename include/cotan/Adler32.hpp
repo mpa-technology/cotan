@@ -20,7 +20,7 @@ class Adler32 : public Hash<std::uint64_t>{
 
 
 
-    std::uint64_t algorithm_(const BitArray &bitArray, const size_t &iteration);
+    std::uint64_t algorithm_(const BitArray &bitArray, const size_t iteration);
 
 
 public:

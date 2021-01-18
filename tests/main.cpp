@@ -12,7 +12,8 @@
 #include "UtilityTest.hpp"
 #include "XorTest.hpp"
 #include "CrcTest.hpp"
-
+#include <cotan/XorShift.hpp>
+using namespace cotan;
 
 
 
@@ -20,7 +21,13 @@
 
 int main(int argc, char *argv[]){
 
+    XorShift  xs(7);
+
+    for(int i = 0;i!=5;++i)
+        std::cout << xs() << std::endl;
+
+
     ::testing::InitGoogleTest(&argc,argv);
 
-    return RUN_ALL_TESTS();
+    //return RUN_ALL_TESTS();
 }

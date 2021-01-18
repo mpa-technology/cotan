@@ -79,7 +79,7 @@ public:
 
     BitArray& operator<<(const std::string &string);
 
-    BitArray& operator<<(const size_t &value);
+    BitArray& operator<<(const size_t value);
 
     BitArray& operator<<(const char *string);
 
@@ -105,13 +105,13 @@ public:
         return *this;
     }
 
-    type& operator[](const size_t &index);
+    type& operator[](const size_t index);
 
-    type& at(const size_t &index);
+    type& at(const size_t index);
 
-    type_const& at(const size_t &index)const;
+    type_const& at(const size_t index)const;
 
-    type_const& operator[](const size_t &index)const;
+    type_const& operator[](const size_t index)const;
 
 
     bool operator == (const BitArray& bitArray)const;
@@ -138,9 +138,9 @@ public:
     BitArraySlice slice();
 
 
-    BitArraySlice slice(const size_t &index);
+    BitArraySlice slice(const size_t index);
 
-    BitArraySlice slice(const size_t &begin , const size_t &end);
+    BitArraySlice slice(const size_t begin , const size_t end);
 
 
 
