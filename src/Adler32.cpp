@@ -7,7 +7,7 @@
 #include <cotan/Adler32.hpp>
 
 
-std::uint64_t cotan::Adler32::algorithm_(const BitArray &bitArray, const size_t &iteration)
+std::uint64_t cotan::Adler32::algorithm_(const BitArray &bitArray, const size_t iteration)
 {
     std::uint64_t s1 = iteration & 0xffff;
     std::uint64_t s2 = (iteration >> 16) & 0xffff;
