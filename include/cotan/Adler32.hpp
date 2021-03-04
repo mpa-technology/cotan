@@ -16,11 +16,11 @@ namespace cotan {
 class Adler32 : public Hash<std::uint64_t>{
 
 
-    size_t iteration_;
+    std::size_t iteration_;
 
 
 
-    std::uint64_t algorithm_(const BitArray &bitArray, const size_t iteration);
+    std::uint64_t algorithm_(const BitArray &bitArray, const std::size_t iteration);
 
 
 public:
@@ -31,12 +31,12 @@ public:
 
     void addData(const BitArray &bitArray)override;
 
-    uint64_t final()override;
+    std::uint64_t final()override;
 
 
     std::uint64_t now(const BitArray &bitArray)override;
 
-    static uint64_t hash(const BitArray &bitArray);
+    static std::uint64_t hash(const BitArray &bitArray);
 
 
 

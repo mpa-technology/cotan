@@ -20,32 +20,32 @@ uint32_t cotan::XorShift::xorshift128_()
 cotan::XorShift::XorShift():
     seed_(0xf),x_(0xff),y_(0xfff),z_(0xffff){}
 
-cotan::XorShift::XorShift(const size_t &seed):
+cotan::XorShift::XorShift(const std::size_t &seed):
     seed_(seed),x_(0xff),y_(0xfff),z_(0xffff)
 {
 
 }
 
-size_t cotan::XorShift::seed() const{
+std::size_t cotan::XorShift::seed() const{
     return seed_;
 }
 
-void cotan::XorShift::setSeed(const size_t &seed){
+void cotan::XorShift::setSeed(const std::size_t &seed){
     seed_ = seed;
 }
 
-size_t cotan::XorShift::step(){
+std::size_t cotan::XorShift::step(){
     return xorshift128_();
 }
 
-size_t cotan::XorShift::operator()(){
+std::size_t cotan::XorShift::operator()(){
     return step();
 }
 
-size_t cotan::XorShift::min() const{
-    return std::numeric_limits<size_t>::min();
+std::size_t cotan::XorShift::min() const{
+    return std::numeric_limits<std::size_t>::min();
 }
 
-size_t cotan::XorShift::max() const{
-    return std::numeric_limits<size_t>::max();
+std::size_t cotan::XorShift::max() const{
+    return std::numeric_limits<std::size_t>::max();
 }

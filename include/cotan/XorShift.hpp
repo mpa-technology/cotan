@@ -13,7 +13,7 @@
 
 namespace cotan {
 
-class XorShift : public RandomInterface<size_t,size_t>{
+class XorShift : public RandomInterface<std::size_t,std::size_t>{
 
 
     uint32_t seed_, x_, y_, z_;
@@ -26,23 +26,23 @@ public:
 
     XorShift();
 
-    XorShift(const size_t &seed);
+    XorShift(const std::size_t &seed);
 
 
-    size_t seed()const override;
+    std::size_t seed()const override;
 
-    void setSeed(const size_t& seed)override;
-
-
-    size_t step()override;
-
-    size_t operator()()override;
+    void setSeed(const std::size_t& seed)override;
 
 
+    std::size_t step()override;
 
-    size_t min()const override;
+    std::size_t operator()()override;
 
-    size_t max()const override;
+
+
+    std::size_t min()const override;
+
+    std::size_t max()const override;
 
 };
 
