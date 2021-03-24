@@ -56,7 +56,7 @@ TEST(RandomGenerator, testRandomNumber) {
   ASSERT_NE(v1, v2);
 }
 
-TEST(RandomGenerator, tsetIterator) {
+TEST(RandomGenerator, testIterator) {
 
   RandomGenerator<SRandEngine> rg;
   std::vector<unsigned long> v(10);
