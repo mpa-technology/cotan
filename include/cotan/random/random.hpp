@@ -6,6 +6,6 @@
 
 #pragma once
 
-#include <cotan/random/SRandEngine.hpp>
+#include <cotan/native/random/randomNative.hpp>
 #include <cotan/random/RandomGenerator.hpp>
-#include <cotan/random/native/native.hpp>
+#include <cotan/random/SRandEngine.hpp>

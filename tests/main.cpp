@@ -97,6 +97,9 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   ASSERT_NE(v2, vs2);
 }
 
+#ifdef USE_SPECIFICALLY_PLATFORM
+
+
 TEST(NativeRandEngine, testRandomNumber) {
 
   NativeRandEngine re;
@@ -130,7 +133,7 @@ TEST(NativeStrongRandEngine, testRandomNumber) {
 
 TEST(NativeStrongRandEngine, testRange) {
 
-  NativeRandEngine re;
+  NativeStrongRandEngine re;
 
   const SRandEngine::generateType min = 25;
   const SRandEngine::generateType max = 128;
@@ -141,7 +144,7 @@ TEST(NativeStrongRandEngine, testRange) {
   }
 }
 
-
+#endif
 
 int main(int argc, char *argv[]) {
 

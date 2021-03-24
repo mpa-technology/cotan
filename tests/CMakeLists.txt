@@ -6,10 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(COTAN_TESTING_LIBRARY_NAME "cotan_test")
 
-option(USE_SPECIFICALLY_PLATFORM ON)
-if(USE_SPECIFICALLY_PLATFORM)
-    set(CMAKE_CXX_FLAGS "-march=native")
-endif()
+
 
 
 
