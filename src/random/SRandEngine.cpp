@@ -3,7 +3,8 @@
    <palshin.maxim.alekseevich@gmail.com> SPDX-License-Identifier: BSD 3-Clause
    "New" or "Revised" License
 */
-#include <cotan/SRandEngine.hpp>
+
+#include <cotan/random/SRandEngine.hpp>
 
 cotan::SRandEngine::SRandEngine() { seed_ = next_ = 1; }
 

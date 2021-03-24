@@ -6,8 +6,8 @@
 
 #include <gtest/gtest.h>
 
-#include <cotan/RandomGenerator.hpp>
-#include <cotan/SRandEngine.hpp>
+#include <cotan/random/random.hpp>
+
 using namespace cotan;
 
 TEST(SRandEngine, testRandomNumber) {
@@ -96,6 +96,52 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   ASSERT_NE(v1, vs1);
   ASSERT_NE(v2, vs2);
 }
+
+TEST(NativeRandEngine, testRandomNumber) {
+
+  NativeRandEngine re;
+  const auto val1 = re.generate();
+  const auto val2 = re.generate();
+
+  ASSERT_NE(val1, val2);
+}
+
+TEST(NativeRandEngine, testRange) {
+
+  NativeRandEngine re;
+
+  const SRandEngine::generateType min = 25;
+  const SRandEngine::generateType max = 128;
+
+  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
+    const auto val = re.generate(min, max);
+    ASSERT_TRUE(val <= max && val >= min);
+  }
+}
+
+TEST(NativeStrongRandEngine, testRandomNumber) {
+
+  NativeStrongRandEngine re;
+  const auto val1 = re.generate();
+  const auto val2 = re.generate();
+
+  ASSERT_NE(val1, val2);
+}
+
+TEST(NativeStrongRandEngine, testRange) {
+
+  NativeRandEngine re;
+
+  const SRandEngine::generateType min = 25;
+  const SRandEngine::generateType max = 128;
+
+  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
+    const auto val = re.generate(min, max);
+    ASSERT_TRUE(val <= max && val >= min);
+  }
+}
+
+
 
 int main(int argc, char *argv[]) {
 

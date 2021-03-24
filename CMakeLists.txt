@@ -12,17 +12,10 @@ set(COTAN_VERSION_MINOR 0)
 set(COTAN_VERSION_PATCH 1)
 set(PROJECT_VERSION ${COAN_VERSION_MAJOR}.${COTAN_VERSION_MINOR}.${COTAN_VERSION_PATCH})
 
+SET(CMAKE_CXX_FLAGS "-march=native")
 
 
-
-option(BUILD_TESTS  "Enable to build test for cotan library" ON)
 option(BUILD_STATIC "Build static library" ON)
-
-
-
-
-
-
 
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
