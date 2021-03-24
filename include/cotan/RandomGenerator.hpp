@@ -44,10 +44,6 @@ public:
 
   seedType getSeed() const { return rengine_.getSeed(); }
 
-  static RandomGenerator create() {
-    RandomGenerator rg;
-    return rg;
-  }
 
   generateType min() const { return rengine_.min(); }
 
@@ -57,6 +53,12 @@ public:
     RandomGenerator rg(seed);
     return rg;
   }
+
+  static RandomGenerator create() {
+    RandomGenerator rg;
+    return rg;
+  }
+
 
 private:
   RENGINE rengine_;
