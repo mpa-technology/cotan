@@ -9,3 +9,4 @@
 #include <cotan/native/random/randomNative.hpp>
 #include <cotan/random/RandomGenerator.hpp>
 #include <cotan/random/SRandEngine.hpp>
+#include <cotan/random/MSWSRandEngine.hpp>
