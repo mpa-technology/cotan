@@ -3,31 +3,64 @@
    SPDX-License-Identifier: BSD 3-Clause "New" or "Revised" License
 */
 
-
-#include <fstream>
-#include <iterator>
+#include <gtest/gtest.h>
 
 
-#include "Adler32Test.hpp"
-#include "UtilityTest.hpp"
-#include "XorTest.hpp"
-#include "CrcTest.hpp"
-#include <cotan/XorShift.hpp>
+
+#include <cotan/SRandEngine.hpp>
+
 using namespace cotan;
 
 
+TEST(SRandEngine,testRandomNumber){
 
+    SRandEngine re;
+    const auto val1 = re.generate();
+    const auto val2 = re.generate();
+
+    ASSERT_NE(val1,val2);
+
+
+}
+
+TEST(SRandEngine,testRange){
+
+
+    SRandEngine re;
+
+    const SRandEngine::generateType min = 25;
+    const SRandEngine::generateType max = 128;
+
+    for(size_t i = 0; i != std::numeric_limits<unsigned short>::max() ; ++i){
+        const auto val = re.generate(min,max);
+        ASSERT_TRUE( val <= max && val >= min );
+    }
+
+
+}
+
+TEST(SRandEngine,testRandomNumberSeed){
+
+
+    SRandEngine re;
+    SRandEngine res(static_cast<unsigned long>(time(nullptr)));
+
+    const auto v1 = re.generate();
+    const auto v2 = re.generate();
+
+    const auto vs1 = res.generate();
+    const auto vs2 = res.generate();
+
+    ASSERT_NE(v1,vs1);
+    ASSERT_NE(v2,vs2);
+
+
+}
 
 
 int main(int argc, char *argv[]){
 
-    XorShift  xs(7);
 
-    for(int i = 0;i!=5;++i)
-        std::cout << xs() << std::endl;
-
-
-    ::testing::InitGoogleTest(&argc,argv);
-
-    //return RUN_ALL_TESTS();
+::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
