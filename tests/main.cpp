@@ -122,8 +122,8 @@ TEST(MSWSRandEngine, testRange) {
 
 TEST(MSWSRandEngine, testRandomNumberSeed) {
 
-  SRandEngine re;
-  SRandEngine res(static_cast<unsigned long>(time(nullptr)));
+  MSWSRandEngine re;
+  MSWSRandEngine res(static_cast<unsigned long>(time(nullptr)));
 
   const auto v1 = re.generate();
   const auto v2 = re.generate();
