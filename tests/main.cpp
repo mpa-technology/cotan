@@ -97,7 +97,47 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   ASSERT_NE(v2, vs2);
 }
 
-#ifdef USE_SPECIFICALLY_PLATFORM
+
+TEST(MSWSRandEngine, testRandomNumber) {
+
+  MSWSRandEngine re;
+  const auto val1 = re.generate();
+  const auto val2 = re.generate();
+
+  ASSERT_NE(val1, val2);
+}
+
+TEST(MSWSRandEngine, testRange) {
+
+  MSWSRandEngine re;
+
+  const MSWSRandEngine::generateType min = 25;
+  const MSWSRandEngine::generateType max = 128;
+
+  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
+    const auto val = re.generate(min, max);
+    ASSERT_TRUE(val <= max && val >= min);
+  }
+}
+
+TEST(MSWSRandEngine, testRandomNumberSeed) {
+
+  SRandEngine re;
+  SRandEngine res(static_cast<unsigned long>(time(nullptr)));
+
+  const auto v1 = re.generate();
+  const auto v2 = re.generate();
+
+  const auto vs1 = res.generate();
+  const auto vs2 = res.generate();
+
+  ASSERT_NE(v1, vs1);
+  ASSERT_NE(v2, vs2);
+}
+
+
+
+#ifdef DISABLE
 
 
 TEST(NativeRandEngine, testRandomNumber) {
