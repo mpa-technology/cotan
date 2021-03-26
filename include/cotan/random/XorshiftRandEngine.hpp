@@ -112,6 +112,7 @@ public:
 
     XorshiftRandEngine &operator=(const XorshiftRandEngine &xorshiftRandEngine){
         state_ = xorshiftRandEngine.state_;
+        return *(this);
     }
 
     void setSeed(const seedType state) noexcept{
