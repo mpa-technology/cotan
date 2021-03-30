@@ -11,41 +11,37 @@
 
 namespace cotan {
 
-
-
 class MSWSRandEngine {
 
 public:
-    using generateType = std::uint64_t ;
-    using seedType = generateType;
+  using generateType = std::uint64_t;
+  using seedType = generateType;
 
-    MSWSRandEngine();
+  MSWSRandEngine();
 
-    MSWSRandEngine(const seedType seed);
+  MSWSRandEngine(const seedType seed);
 
-    MSWSRandEngine(const MSWSRandEngine &mSWSRandEngine);
+  MSWSRandEngine(const MSWSRandEngine &mSWSRandEngine);
 
-    generateType generate() noexcept;
+  generateType generate() noexcept;
 
-    generateType generate(const generateType min,
-                          const generateType max) noexcept;
+  generateType generate(const generateType min,
+                        const generateType max) noexcept;
 
-    generateType min() const noexcept;
+  generateType min() const noexcept;
 
-    generateType max() const noexcept;
+  generateType max() const noexcept;
 
-    MSWSRandEngine &operator=(const MSWSRandEngine &mSWSRandEngine);
+  MSWSRandEngine &operator=(const MSWSRandEngine &mSWSRandEngine);
 
-    void setSeed(const seedType seed) noexcept;
+  void setSeed(const seedType seed) noexcept;
 
-    seedType getSeed() const noexcept;
+  seedType getSeed() const noexcept;
 
 private:
-    seedType seed_;
-    generateType x_;
-    generateType w_;
-
-
+  seedType seed_;
+  generateType x_;
+  generateType w_;
 };
 
-}
+} // namespace cotan

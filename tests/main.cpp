@@ -97,7 +97,6 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   ASSERT_NE(v2, vs2);
 }
 
-
 TEST(MSWSRandEngine, testRandomNumber) {
 
   MSWSRandEngine re;
@@ -135,25 +134,16 @@ TEST(MSWSRandEngine, testRandomNumberSeed) {
   ASSERT_NE(v2, vs2);
 }
 
+TEST(StringGenerator, testRandomString) {
 
-
-TEST(StringGenerator,testRandomString){
-
-
-StringGenerator<XorshiftRandEngine<std::uint64_t>>sg;
-sg.setSeed({12,"0123456789!@#$%^&*ABCDEFGHIJKLMNOPQRSTUVWXYZ"});
-const auto v1 = sg.generate();
-const auto v2 = sg.generate();
-ASSERT_NE(v1,v2);
-
-
-
+  StringGenerator<XorshiftRandEngine<std::uint64_t>> sg;
+  sg.setSeed({12, "0123456789!@#$%^&*ABCDEFGHIJKLMNOPQRSTUVWXYZ"});
+  const auto v1 = sg.generate();
+  const auto v2 = sg.generate();
+  ASSERT_NE(v1, v2);
 }
 
-
-
 #ifdef DISABLE
-
 
 TEST(NativeRandEngine, testRandomNumber) {
 
