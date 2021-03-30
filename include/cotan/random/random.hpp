@@ -11,3 +11,4 @@
 #include <cotan/random/SRandEngine.hpp>
 #include <cotan/random/MSWSRandEngine.hpp>
 #include <cotan/random/XorshiftRandEngine.hpp>
+#include <cotan/random/StringGenerator.hpp>

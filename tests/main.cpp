@@ -137,6 +137,21 @@ TEST(MSWSRandEngine, testRandomNumberSeed) {
 
 
 
+TEST(StringGenerator,testRandomString){
+
+
+StringGenerator<XorshiftRandEngine<std::uint64_t>>sg;
+sg.setSeed({12,"0123456789!@#$%^&*ABCDEFGHIJKLMNOPQRSTUVWXYZ"});
+const auto v1 = sg.generate();
+const auto v2 = sg.generate();
+ASSERT_NE(v1,v2);
+
+
+
+}
+
+
+
 #ifdef DISABLE
 
 
