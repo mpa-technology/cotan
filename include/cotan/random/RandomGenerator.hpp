@@ -17,6 +17,9 @@ public:
   RandomGenerator() {}
   RandomGenerator(seedType seed) { setSeed(seed); }
   RandomGenerator(const RandomGenerator &rg) { rengine_ = rg.rengine_; }
+  RandomGenerator(const RENGINE &engine){
+      rengine_ = engine;
+  }
 
   generateType generate() { return rengine_.generate(); }
 
