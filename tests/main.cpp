@@ -35,7 +35,7 @@ TEST(SRandEngine, testRange) {
 TEST(SRandEngine, testRandomNumberSeed) {
 
   SRandEngine re;
-  SRandEngine res(static_cast<unsigned long>(time(nullptr)));
+  SRandEngine res(static_cast<SRandEngine::seedType>(time(nullptr)));
 
   const auto v1 = re.generate();
   const auto v2 = re.generate();
@@ -59,7 +59,7 @@ TEST(RandomGenerator, testRandomNumber) {
 TEST(RandomGenerator, testIterator) {
 
   RandomGenerator<SRandEngine> rg;
-  std::vector<unsigned long> v(10);
+  std::vector<SRandEngine::generateType> v(10);
 
   rg.generate(v.begin(), v.end());
 
@@ -124,7 +124,7 @@ TEST(MSWSRandEngine, testRange) {
 TEST(MSWSRandEngine, testRandomNumberSeed) {
 
   MSWSRandEngine re;
-  MSWSRandEngine res(static_cast<unsigned long>(time(nullptr)));
+  MSWSRandEngine res(static_cast<MSWSRandEngine::seedType>(time(nullptr)));
 
   const auto v1 = re.generate();
   const auto v2 = re.generate();
@@ -145,7 +145,7 @@ TEST(StringGenerator, testRandomString) {
   ASSERT_NE(v1, v2);
 }
 
-#ifdef DISABLE
+#ifdef USE_SPECIFICALLY_PLATFORM
 
 TEST(NativeRandEngine, testRandomNumber) {
 
