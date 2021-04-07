@@ -20,7 +20,6 @@ public:
 
   generateType generate();
 
-  generateType generate(const generateType min, const generateType max);
 
   generateType min() const noexcept;
 

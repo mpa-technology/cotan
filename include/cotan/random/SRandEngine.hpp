@@ -21,8 +21,6 @@ public:
 
   generateType generate() noexcept;
 
-  generateType generate(const generateType min,
-                        const generateType max) noexcept;
 
   generateType min() const noexcept;
 

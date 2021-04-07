@@ -27,11 +27,7 @@ cotan::MSWSRandEngine::generateType cotan::MSWSRandEngine::generate() noexcept {
   return x_ = (x_ >> 32) | (x_ << 32);
 }
 
-cotan::MSWSRandEngine::generateType cotan::MSWSRandEngine::generate(
-    const cotan::MSWSRandEngine::generateType min,
-    const cotan::MSWSRandEngine::generateType max) noexcept {
-  return generate() % (max - min + 1) + min;
-}
+
 
 cotan::MSWSRandEngine::generateType
 cotan::MSWSRandEngine::min() const noexcept {

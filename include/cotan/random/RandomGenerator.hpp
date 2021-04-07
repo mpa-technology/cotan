@@ -23,7 +23,7 @@ public:
 
   generateType generate(const std::pair<generateType, generateType> range) {
     const auto [min, max] = range;
-    return rengine_.generate(min, max);
+    return rengine_.generate() % (max - min + 1) + min;
   }
 
   template <typename ForwardIterator>

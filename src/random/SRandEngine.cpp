@@ -22,11 +22,6 @@ cotan::SRandEngine::generateType cotan::SRandEngine::generate() noexcept {
   return (next_ / 65536) % (randMax_ + 1);
 }
 
-cotan::SRandEngine::generateType
-cotan::SRandEngine::generate(const SRandEngine::generateType min,
-                             const SRandEngine::generateType max) noexcept {
-  return generate() % (max - min + 1) + min;
-}
 
 cotan::SRandEngine::generateType cotan::SRandEngine::min() const noexcept {
   return 0;

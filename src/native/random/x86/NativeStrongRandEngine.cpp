@@ -19,12 +19,7 @@ cotan::NativeStrongRandEngine::generate() {
   return rn;
 }
 
-cotan::NativeStrongRandEngine::generateType
-cotan::NativeStrongRandEngine::generate(
-    const cotan::NativeStrongRandEngine::generateType min,
-    const cotan::NativeStrongRandEngine::generateType max) {
-  return generate() % (max - min + 1) + min;
-}
+
 
 cotan::NativeStrongRandEngine::generateType
 cotan::NativeStrongRandEngine::min() const noexcept {

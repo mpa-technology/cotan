@@ -19,18 +19,7 @@ TEST(SRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-TEST(SRandEngine, testRange) {
 
-  SRandEngine re;
-
-  const SRandEngine::generateType min = 25;
-  const SRandEngine::generateType max = 128;
-
-  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
-    const auto val = re.generate(min, max);
-    ASSERT_TRUE(val <= max && val >= min);
-  }
-}
 
 TEST(SRandEngine, testRandomNumberSeed) {
 
@@ -108,18 +97,7 @@ TEST(MSWSRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-TEST(MSWSRandEngine, testRange) {
 
-  MSWSRandEngine re;
-
-  const MSWSRandEngine::generateType min = 25;
-  const MSWSRandEngine::generateType max = 128;
-
-  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
-    const auto val = re.generate(min, max);
-    ASSERT_TRUE(val <= max && val >= min);
-  }
-}
 
 TEST(MSWSRandEngine, testRandomNumberSeed) {
 
@@ -156,18 +134,6 @@ TEST(NativeRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-TEST(NativeRandEngine, testRange) {
-
-  NativeRandEngine re;
-
-  const SRandEngine::generateType min = 25;
-  const SRandEngine::generateType max = 128;
-
-  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
-    const auto val = re.generate(min, max);
-    ASSERT_TRUE(val <= max && val >= min);
-  }
-}
 
 TEST(NativeStrongRandEngine, testRandomNumber) {
 
@@ -178,20 +144,9 @@ TEST(NativeStrongRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-TEST(NativeStrongRandEngine, testRange) {
-
-  NativeStrongRandEngine re;
-
-  const SRandEngine::generateType min = 25;
-  const SRandEngine::generateType max = 128;
-
-  for (size_t i = 0; i != std::numeric_limits<unsigned short>::max(); ++i) {
-    const auto val = re.generate(min, max);
-    ASSERT_TRUE(val <= max && val >= min);
-  }
-}
 
 #endif
+
 
 int main(int argc, char *argv[]) {
 

@@ -27,7 +27,7 @@ public:
     const auto [length, string] = seed_;
 
     for (size_t i = 0; i != length; ++i) {
-      const size_t index = rengine_.generate(0, string.length() - 1);
+      const size_t index = rengine_.generate() % (length - 0 + 1) + 0;
       result += seed_.second.at(index);
     }
 
