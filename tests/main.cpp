@@ -65,7 +65,7 @@ TEST(RandomGenerator, testRange) {
   const SRandEngine::generateType min = 25;
   const SRandEngine::generateType max = 128;
 
-  for (size_t i = 0; i != std::numeric_limits<SRandEngine::generateType>::max();
+  for (size_t i = 0; i != 128;
        ++i) {
     const auto val = re.generate({min, max});
     ASSERT_TRUE(val <= max && val >= min);
@@ -84,6 +84,7 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   const auto vs1 = res.generate();
   const auto vs2 = res.generate();
 
+  std::cout << "ok" << std::endl;
   ASSERT_NE(v1, vs1);
   ASSERT_NE(v2, vs2);
 }
