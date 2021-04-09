@@ -19,11 +19,21 @@ cotan::NativeRandEngine::generateType cotan::NativeRandEngine::generate() {
   return rn;
 }
 
+cotan::NativeRandEngine::generateType cotan::NativeRandEngine::generateNotThrow(){
+
+
+    generateType rn;
+    const auto res = _rdrand64_step(&rn);
+
+    return !res ? generateNotThrow() : rn;
+
+}
+
 
 
 cotan::NativeRandEngine::generateType
 cotan::NativeRandEngine::min() const noexcept {
-  return std::numeric_limits<generateType>::min();
+    return std::numeric_limits<generateType>::min();
 }
 
 cotan::NativeRandEngine::generateType

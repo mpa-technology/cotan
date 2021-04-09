@@ -19,7 +19,7 @@ public:
   NativeRandEngine();
 
   generateType generate();
-
+  generateType generateNotThrow();
 
 
   generateType min() const noexcept;
