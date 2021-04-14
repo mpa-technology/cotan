@@ -84,7 +84,6 @@ TEST(RandomGenerator, testRandomNumberSeed) {
   const auto vs1 = res.generate();
   const auto vs2 = res.generate();
 
-  std::cout << "ok" << std::endl;
   ASSERT_NE(v1, vs1);
   ASSERT_NE(v2, vs2);
 }
@@ -124,6 +123,7 @@ TEST(StringGenerator, testRandomString) {
   ASSERT_NE(v1, v2);
 }
 
+
 #ifdef USE_SPECIFICALLY_PLATFORM
 
 TEST(NativeRandEngine, testRandomNumber) {
@@ -139,8 +139,8 @@ TEST(NativeRandEngine, testRandomNumber) {
 TEST(NativeStrongRandEngine, testRandomNumber) {
 
   NativeStrongRandEngine re;
-  const auto val1 = re.generate();
-  const auto val2 = re.generate();
+  const auto val1 = re.generateNotThrow();
+  const auto val2 = re.generateNotThrow();
 
   ASSERT_NE(val1, val2);
 }
