@@ -19,15 +19,13 @@ cotan::NativeStrongRandEngine::generate() {
   return rn;
 }
 
-cotan::NativeStrongRandEngine::generateType cotan::NativeStrongRandEngine::generateNotThrow()
-{
-    generateType rn;
-    const auto res = _rdseed64_step(&rn);
+cotan::NativeStrongRandEngine::generateType
+cotan::NativeStrongRandEngine::generateNotThrow() {
+  generateType rn;
+  const auto res = _rdseed64_step(&rn);
 
-    return !res ? generateNotThrow() : rn;
+  return !res ? generateNotThrow() : rn;
 }
-
-
 
 cotan::NativeStrongRandEngine::generateType
 cotan::NativeStrongRandEngine::min() const noexcept {

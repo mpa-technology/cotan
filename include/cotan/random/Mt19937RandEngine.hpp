@@ -6,58 +6,48 @@
 
 #pragma once
 
+#include <array>
 #include <cstdint>
 #include <limits>
-#include <array>
 
 namespace cotan {
 
-
-
 class Mt19937RandEngine {
 
-
 public:
-    using generateType = unsigned long long;
-    using seedType = generateType;
+  using generateType = unsigned long long;
+  using seedType = generateType;
 
-    Mt19937RandEngine();
+  Mt19937RandEngine();
 
-    generateType  generate();
+  generateType generate();
 
-
-    void setSeed(const seedType seed){
-        _clear();
-        _seed = seed;
-        _init();
-    }
+  void setSeed(const seedType seed) {
+    _clear();
+    _seed = seed;
+    _init();
+  }
 
 private:
+  const generateType MM = 156;
+  const generateType MATRIX_A = 0xB5026F5AA96619E9ULL;
+  const generateType UM = 0xFFFFFFFF80000000ULL;
+  const generateType LM = 0x7FFFFFFFUL;
 
+  static constexpr generateType NN = 312;
+  std::array<generateType, NN> mt;
 
-    const generateType MM = 156;
-    const generateType MATRIX_A = 0xB5026F5AA96619E9ULL;
-    const generateType UM = 0xFFFFFFFF80000000ULL;
-    const generateType LM =0x7FFFFFFFUL;
+  generateType mti;
 
-    static constexpr generateType NN = 312;
-    std::array<generateType,NN>mt;
+  void _init_genrand64(generateType seed);
 
+  void _init_by_array64(generateType init_key[], generateType key_length);
 
-    generateType mti;
+  void _clear();
 
-    void _init_genrand64( generateType seed);
+  void _init();
 
-    void _init_by_array64( generateType init_key[],
-                           generateType key_length);
-
-    void _clear();
-
-    void _init();
-
-
-    seedType _seed = 5489ULL;
+  seedType _seed = 5489ULL;
 };
 
-
-}
+} // namespace cotan

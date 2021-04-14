@@ -33,7 +33,6 @@ public:
     state_ = xorshiftRandEngine.state_;
   }
 
-
   generateType min() const noexcept { return 0; }
 
   generateType max() const noexcept {

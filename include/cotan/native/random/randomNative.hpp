@@ -6,7 +6,7 @@
 
 #pragma once
 
-#ifdef USE_SPECIFICALLY_PLATFORM
+#if defined(USE_SPECIFICALLY_PLATFORM) || defined(COTAN_SP)
 
 #if defined(__x86_64__) || defined(__amd64) || defined(__x86)
 #include <cotan/native/random/x86/NativeRandEngine.hpp>

@@ -19,8 +19,6 @@ TEST(SRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-
-
 TEST(SRandEngine, testRandomNumberSeed) {
 
   SRandEngine re;
@@ -65,8 +63,7 @@ TEST(RandomGenerator, testRange) {
   const SRandEngine::generateType min = 25;
   const SRandEngine::generateType max = 128;
 
-  for (size_t i = 0; i != 128;
-       ++i) {
+  for (size_t i = 0; i != 128; ++i) {
     const auto val = re.generate({min, max});
     ASSERT_TRUE(val <= max && val >= min);
   }
@@ -97,8 +94,6 @@ TEST(MSWSRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-
-
 TEST(MSWSRandEngine, testRandomNumberSeed) {
 
   MSWSRandEngine re;
@@ -123,7 +118,6 @@ TEST(StringGenerator, testRandomString) {
   ASSERT_NE(v1, v2);
 }
 
-
 #ifdef USE_SPECIFICALLY_PLATFORM
 
 TEST(NativeRandEngine, testRandomNumber) {
@@ -135,7 +129,6 @@ TEST(NativeRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-
 TEST(NativeStrongRandEngine, testRandomNumber) {
 
   NativeStrongRandEngine re;
@@ -145,9 +138,7 @@ TEST(NativeStrongRandEngine, testRandomNumber) {
   ASSERT_NE(val1, val2);
 }
 
-
 #endif
-
 
 int main(int argc, char *argv[]) {
 

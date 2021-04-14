@@ -7,39 +7,18 @@
 _Pragma("once")
 #include <ctime>
 
-namespace cotan {
+    namespace cotan {
 
-class RandomTimeDevice{
+  class RandomTimeDevice {
 
-public:
+  public:
+    template <typename T> T time() const { return static_cast<T>(_time()); }
 
+    template <> std::time_t time() const { return _time(); }
 
-    template<typename T>
-    T time()const {
-        return static_cast<T>(_time());
-    }
+    template <typename T> T generate() { return time<T>(); }
 
-    template<>
-    std::time_t time()const{
-        return _time();
-    }
-
-    template<typename T>
-    T generate(){
-        return time<T>();
-    }
-
-
-
-
-private:
-    std::time_t _time()const{
-        return std::time(nullptr);
-    }
-
-
-
-};
-
-
+  private:
+    std::time_t _time() const { return std::time(nullptr); }
+  };
 }
