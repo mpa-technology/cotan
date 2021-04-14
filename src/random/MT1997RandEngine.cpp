@@ -79,8 +79,9 @@ void MT1997RandEngine::_clear(){
 
     mti = MT1997RandEngine_NN+1;
 
-    for(auto &it : mt)
-        it = 0;
+    mt.fill(0);
+
+
 }
 
 void MT1997RandEngine::_init(){

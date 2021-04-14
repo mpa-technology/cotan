@@ -8,13 +8,20 @@
 
 #include <cstdint>
 #include <limits>
-
+#include <array>
 class MT1997RandEngine {
 
 
 public:
     using generateType = unsigned long long;
     using seedType = generateType;
+
+
+
+
+    MT1997RandEngine();
+
+    generateType  generate();
 
 private:
 
@@ -29,18 +36,8 @@ private:
     const generateType LM =0x7FFFFFFFUL;
 
 
+    std::array<generateType,MT1997RandEngine_NN>mt;
 
-
-public:
-
-
-    MT1997RandEngine();
-
-    generateType  generate();
-
-private:
-
-    generateType mt[MT1997RandEngine_NN];
 
     generateType mti;
 
