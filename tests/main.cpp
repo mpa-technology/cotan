@@ -109,6 +109,47 @@ TEST(MSWSRandEngine, testRandomNumberSeed) {
   ASSERT_NE(v2, vs2);
 }
 
+TEST(Mt19937RandEngine, testRandomNumber) {
+
+  Mt19937RandEngine re;
+  const auto val1 = re.generate();
+  const auto val2 = re.generate();
+
+  ASSERT_NE(val1, val2);
+}
+
+TEST(Mt19937RandEngine, testRandomNumberSeed) {
+  MSWSRandEngine re;
+  MSWSRandEngine res(static_cast<MSWSRandEngine::seedType>(time(nullptr)));
+
+  const auto v1 = re.generate();
+  const auto v2 = re.generate();
+
+  const auto vs1 = res.generate();
+  const auto vs2 = res.generate();
+
+  ASSERT_NE(v1, vs1);
+  ASSERT_NE(v2, vs2);
+}
+
+TEST(RandomTimeDevice, test) {
+  RandomTimeDevice re;
+
+
+  const auto v1 = re.generate<long>();
+  const auto v2 = re.generate<long>();
+
+  sleep(1);
+
+  const auto vs1 = re.generate<long>();
+  const auto vs2 = re.generate<long>();
+
+  ASSERT_NE(v1, vs1);
+  ASSERT_NE(v2, vs2);
+}
+
+
+
 TEST(StringGenerator, testRandomString) {
 
   StringGenerator<XorshiftRandEngine<std::uint64_t>> sg;
@@ -118,7 +159,7 @@ TEST(StringGenerator, testRandomString) {
   ASSERT_NE(v1, v2);
 }
 
-#ifdef USE_SPECIFICALLY_PLATFORM
+#if defined(USE_SPECIFICALLY_PLATFORM) || defined(COTAN_SP)
 
 TEST(NativeRandEngine, testRandomNumber) {
 
