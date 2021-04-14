@@ -9,34 +9,39 @@
 #include <cstdint>
 #include <limits>
 #include <array>
-class MT1997RandEngine {
+
+namespace cotan {
+
+
+
+class Mt19937RandEngine {
 
 
 public:
     using generateType = unsigned long long;
     using seedType = generateType;
 
-
-
-
-    MT1997RandEngine();
+    Mt19937RandEngine();
 
     generateType  generate();
 
+
+    void setSeed(const seedType seed){
+        _clear();
+        _seed = seed;
+        _init();
+    }
+
 private:
 
-
-#ifndef MT1997RandEngine_NN
-#define MT1997RandEngine_NN 312
-#endif
 
     const generateType MM = 156;
     const generateType MATRIX_A = 0xB5026F5AA96619E9ULL;
     const generateType UM = 0xFFFFFFFF80000000ULL;
     const generateType LM =0x7FFFFFFFUL;
 
-
-    std::array<generateType,MT1997RandEngine_NN>mt;
+    static constexpr generateType NN = 312;
+    std::array<generateType,NN>mt;
 
 
     generateType mti;
@@ -55,3 +60,4 @@ private:
 };
 
 
+}
