@@ -11,12 +11,11 @@ cotan::Mt19937RandEngine::Mt19937RandEngine() { _init(); }
 cotan::Mt19937RandEngine::generateType cotan::Mt19937RandEngine::generate() {
   int i;
   unsigned long long x;
-  static unsigned long long mag01[2] = {0ULL, MATRIX_A};
+   unsigned long long mag01[2] = {0ULL, MATRIX_A};
 
   if (mti >= NN) {
 
-    //            if (mti == NN+1)
-    //                _init_genrand64(5489ULL);
+    
 
     for (i = 0; i < NN - MM; i++) {
       x = (mt[i] & UM) | (mt[i + 1] & LM);
