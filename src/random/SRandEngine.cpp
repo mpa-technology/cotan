@@ -6,20 +6,19 @@
 
 #include <cotan/random/SRandEngine.hpp>
 
-cotan::SRandEngine::SRandEngine() { seed_ = next_ = 1; }
+cotan::SRandEngine::SRandEngine() { seed_ = 1; }
 
 cotan::SRandEngine::SRandEngine(const cotan::SRandEngine::seedType seed) {
-  next_ = seed_ = seed;
+  seed_ = seed;
 }
 
 cotan::SRandEngine::SRandEngine(const SRandEngine &sRandEngine) {
-  next_ = sRandEngine.next_;
   seed_ = sRandEngine.seed_;
 }
 
 cotan::SRandEngine::generateType cotan::SRandEngine::generate() noexcept {
-  next_ = next_ * 1103515245 + 12345;
-  return (next_ / 65536) % (randMax_ + 1);
+  seed_ = seed_ * 1103515245 + 12345;
+  return (seed_ / 65536) % (randMax_ + 1);
 }
 
 cotan::SRandEngine::generateType cotan::SRandEngine::min() const noexcept {
@@ -32,13 +31,12 @@ cotan::SRandEngine::generateType cotan::SRandEngine::max() const noexcept {
 
 cotan::SRandEngine &
 cotan::SRandEngine::operator=(const SRandEngine &sRandEngine) {
-  next_ = sRandEngine.next_;
   seed_ = sRandEngine.seed_;
   return *this;
 }
 
 void cotan::SRandEngine::setSeed(const SRandEngine::seedType seed) noexcept {
-  seed_ = next_ = seed;
+  seed_ =  seed;
 }
 
 cotan::SRandEngine::seedType cotan::SRandEngine::getSeed() const noexcept {

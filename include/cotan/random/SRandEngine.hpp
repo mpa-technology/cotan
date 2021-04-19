@@ -32,7 +32,7 @@ public:
   seedType getSeed() const noexcept;
 
 private:
-  generateType next_ = 1;
+
   seedType seed_;
   const generateType randMax_ = 32767;
 };
