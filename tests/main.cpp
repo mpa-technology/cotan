@@ -8,7 +8,24 @@
 
 #include <cotan/random/random.hpp>
 
+#include <cotan/Utils/Memory.hpp>
+
 using namespace cotan;
+
+TEST(Memory,isZero){
+   std::array<int,10>array;
+   array.fill(25);
+
+   ASSERT_FALSE(isZero(array.data(),array.data()+array.size()));
+    array.fill(0);
+    ASSERT_TRUE(isZero(array.data(),array.data()+array.size()));
+
+    ASSERT_THROW(isZero(array.data(), nullptr),std::invalid_argument);
+    ASSERT_THROW(isZero(nullptr,array.data()),std::invalid_argument);
+    ASSERT_THROW(isZero(nullptr, nullptr),std::invalid_argument);
+
+
+}
 
 TEST(SRandEngine, testRandomNumber) {
 
