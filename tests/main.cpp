@@ -8,21 +8,21 @@
 
 #include <cotan/random/random.hpp>
 
-#include <cotan/Utils/Memory.hpp>
+#include <cotan/utils/Memory.hpp>
 
 using namespace cotan;
 
-TEST(Memory,isZero){
-   std::array<int,10>array;
-   array.fill(25);
+TEST(Memory, isZero) {
+    std::array<int, 10> array;
+    array.fill(25);
 
-   ASSERT_FALSE(isZero(array.data(),array.data()+array.size()));
+    ASSERT_FALSE(isZeroMemory(array.data(), array.data() + array.size()));
     array.fill(0);
-    ASSERT_TRUE(isZero(array.data(),array.data()+array.size()));
+    ASSERT_TRUE(isZeroMemory(array.data(), array.data() + array.size()));
 
-    ASSERT_THROW(isZero(array.data(), nullptr),std::invalid_argument);
-    ASSERT_THROW(isZero(nullptr,array.data()),std::invalid_argument);
-    ASSERT_THROW(isZero(nullptr, nullptr),std::invalid_argument);
+    ASSERT_THROW(isZeroMemory(array.data(), nullptr), std::invalid_argument);
+    ASSERT_THROW(isZeroMemory(nullptr, array.data()), std::invalid_argument);
+    ASSERT_THROW(isZeroMemory(nullptr, nullptr), std::invalid_argument);
 
 
 }
@@ -91,7 +91,7 @@ TEST(RandomGenerator, testRandomNumberSeed) {
 
     RandomGenerator<SRandEngine> re;
     RandomGenerator<SRandEngine> res(
-                static_cast<SRandEngine::generateType>(time(nullptr)));
+            static_cast<SRandEngine::generateType>(time(nullptr)));
 
     const auto v1 = re.generate();
     const auto v2 = re.generate();
@@ -186,7 +186,6 @@ TEST(RandomTimeDevice, testTime) {
     const auto v2 = re.generate<long>();
 
 
-
     ASSERT_NE(v1, v2);
 
 }
@@ -222,47 +221,6 @@ TEST(NativeStrongRandEngine, testRandomNumber) {
 
 #endif
 
-class f8SRandEngine {
-
-public:
-    using generateType = unsigned char;
-    using seedType = generateType;
-
-    f8SRandEngine():_x(0),_y(0),_z(0),_seed(1){}
-
-    f8SRandEngine(const seedType seed):_x(0),_y(0),_z(0),_seed(seed){}
-
-
-    generateType generate() noexcept{
-        auto t = _x ^ (_x << 4);
-        _x=_y;
-        _y=_z;
-        _z=_seed;
-        _seed = _z ^ t ^ ( _z >> 1) ^ (t << 1);
-
-        return _seed;
-    }
-
-    generateType min() const noexcept{
-        return  std::numeric_limits<generateType>::min();
-    }
-
-    generateType max() const noexcept{
-        return  std::numeric_limits<generateType>::max();
-    }
-
-
-    void setSeed(const seedType seed) noexcept{
-        _seed = seed;
-    }
-
-    seedType getSeed() const noexcept{
-        return _seed;
-    }
-
-private:
-    generateType _x, _y, _z, _seed;
-};
 
 
 TEST(f8SRandEngine, testRandomNumber) {
@@ -294,43 +252,41 @@ TEST(f8SRandEngine, testRandomNumberSeed) {
 TEST(f8SRandEngine, testSpeed) {
 
     f8SRandEngine re;
-    for(size_t i = 0; i!=std::numeric_limits<size_t>::max();++i){
-       const  f8SRandEngine::generateType t = re.generate();
-       static_cast<void>(t);
+    for (size_t i = 0; i != std::numeric_limits<size_t>::max(); ++i) {
+        const f8SRandEngine::generateType t = re.generate();
+        static_cast<void>(t);
     }
 }
 
 TEST(MSWSRandEngine, testSpeed) {
 
     MSWSRandEngine re;
-    for(unsigned int i = 0; i!=std::numeric_limits<unsigned int>::max();++i){
-       const  MSWSRandEngine::generateType t = re.generate();
-       static_cast<void>(t);
+    for (unsigned int i = 0; i != std::numeric_limits<unsigned int>::max(); ++i) {
+        const MSWSRandEngine::generateType t = re.generate();
+        static_cast<void>(t);
     }
 }
 
 TEST(Mt19937RandEngine, testSpeed) {
 
     Mt19937RandEngine re;
-    for(unsigned int i = 0; i!=std::numeric_limits<unsigned int>::max();++i){
-       const  Mt19937RandEngine::generateType t = re.generate();
-       static_cast<void>(t);
+    for (unsigned int i = 0; i != std::numeric_limits<unsigned int>::max(); ++i) {
+        const Mt19937RandEngine::generateType t = re.generate();
+        static_cast<void>(t);
     }
 }
+
 TEST(SRandEngine, testSpeed) {
 
     SRandEngine re;
-    for(unsigned int i = 0; i!=std::numeric_limits<unsigned int>::max();++i){
-       const  SRandEngine::generateType t = re.generate();
-       static_cast<void>(t);
+    for (unsigned int i = 0; i != std::numeric_limits<unsigned int>::max(); ++i) {
+        const SRandEngine::generateType t = re.generate();
+        static_cast<void>(t);
     }
 }
 
 
-
-
 #endif
-
 
 
 int main(int argc, char *argv[]) {
