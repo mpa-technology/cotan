@@ -16,6 +16,7 @@ TEST(Memory, isZero) {
     std::array<int, 10> array;
     array.fill(25);
 
+
     ASSERT_FALSE(isZeroMemory(array.data(), array.data() + array.size()));
     array.fill(0);
     ASSERT_TRUE(isZeroMemory(array.data(), array.data() + array.size()));
@@ -23,7 +24,6 @@ TEST(Memory, isZero) {
     ASSERT_THROW(isZeroMemory(array.data(), nullptr), std::invalid_argument);
     ASSERT_THROW(isZeroMemory(nullptr, array.data()), std::invalid_argument);
     ASSERT_THROW(isZeroMemory(nullptr, nullptr), std::invalid_argument);
-
 
 }
 

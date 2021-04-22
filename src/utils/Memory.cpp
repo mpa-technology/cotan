@@ -1,22 +1,5 @@
 #include <cotan/utils/Memory.hpp>
 
-bool cotan::isZeroMemory(void *const begin, void *const end) {
-
-
-    if(!begin || !end)
-        throw std::invalid_argument("begin or end == nullptr");
-
-    const auto itb = reinterpret_cast<char*>(begin);
-    const auto ite = reinterpret_cast<char*>(end);
-
-    for(auto i = itb ; i != ite ; ++i) {
-        if (*i != 0) {
-            return false;
-        }
-    }
-
-    return true;
-}
 
 void cotan::zeroMemory(void *const begin, void *const end) {
     using  ptrType = volatile unsigned char *volatile;
@@ -68,4 +51,22 @@ void cotan::swapMemory(void *const begin, void *const end, void *const dis) {
     }
 
 
+}
+
+bool cotan::isZeroMemory(void *const begin, void *const end) {
+
+
+    if(!begin || !end)
+        throw std::invalid_argument("begin or end == nullptr");
+
+    const auto itb = reinterpret_cast<char*>(begin);
+    const auto ite = reinterpret_cast<char*>(end);
+
+    for(auto i = itb ; i != ite ; ++i) {
+        if (*i != 0) {
+            return false;
+        }
+    }
+
+    return true;
 }
