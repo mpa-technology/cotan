@@ -19,6 +19,9 @@ namespace cotan{
 
     void swapMemory(void *const begin , void *const end, void *const dis);
 
+    size_t distanceMemory(const void *begin , const void *end);
+
+
 }
 
 

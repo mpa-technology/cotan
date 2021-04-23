@@ -70,3 +70,15 @@ bool cotan::isZeroMemory(void *const begin, void *const end) {
 
     return true;
 }
+
+size_t cotan::distanceMemory(const void *begin, const void *end) {
+    size_t  count = 0;
+
+    auto itb = reinterpret_cast<const char *>(begin);
+    auto ite = reinterpret_cast<const char *>(end);
+
+
+    for(; itb!=ite;++count,++itb);
+
+    return count;
+}
